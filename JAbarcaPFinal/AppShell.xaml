@@ -8,36 +8,59 @@
     Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
-        Title="VLoading"
+        Title="Loading"
         ContentTemplate="{DataTemplate views:VLoading}"
         Route="VLoading"
         Shell.FlyoutItemIsVisible="False"
 
         />
     <ShellContent
-        Title="VILogin"
+        Title="Login"
         ContentTemplate="{DataTemplate views:VILogin}"
         Route="VILogin"
         Shell.FlyoutBehavior="Disabled"
         Shell.FlyoutItemIsVisible="False"
 
         />
-    <TabBar FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent
-            Title="VDetAttention"
-            ContentTemplate="{DataTemplate views:VDetAttention}"
-            Route="VDetAttention" />
-        <ShellContent
-            Title="VDetAttentionCurrent"
+    <ShellContent
+            Title="Detalle Registro Actual"
             ContentTemplate="{DataTemplate views:VDetAttentionCurrent}"
-            Route="VDetAttentionCurrent" />
+            Route="VDetAttentionCurrent"
+            Shell.FlyoutItemIsVisible="False"
+            Shell.FlyoutBehavior="Disabled"
+            Shell.BackgroundColor="DarkGoldenrod"
+            Shell.TabBarBackgroundColor="DimGray"
+            Shell.TabBarTitleColor="White"
+            />
+    <TabBar FlyoutDisplayOptions="AsMultipleItems" >
         <ShellContent
-            Title="VIRegAttention"
+            Title="  Det.Registro"
+            ContentTemplate="{DataTemplate views:VDetAttention}"
+            Shell.BackgroundColor="DarkGoldenrod"
+            Shell.TabBarBackgroundColor="DimGray"
+            Shell.TabBarTitleColor="White"
+            Shell.UnselectedColor="DarkGoldenrod"
+            Shell.TabBarUnselectedColor="DarkGoldenrod"
+            Route="VDetAttention" />
+        
+        <ShellContent
+            Title="  Registrar"
             ContentTemplate="{DataTemplate views:VIRegAttention}"
-            Route="VIRegAttention" />
+            Route="VIRegAttention"
+            Shell.BackgroundColor="DarkGoldenrod"
+            Shell.TabBarBackgroundColor="DimGray"
+            Shell.TabBarTitleColor="White"
+            Shell.TabBarUnselectedColor="DarkGoldenrod"
+
+            />
         <ShellContent
-            Title="VIUser"
+            Title="  Usuario"
             ContentTemplate="{DataTemplate views:VIUser}"
+            Shell.BackgroundColor="DarkGoldenrod"
+            Shell.TabBarBackgroundColor="DimGray"
+            Shell.TabBarTitleColor="White"
+            Shell.TabBarUnselectedColor="DarkGoldenrod"
+
             Route="VIUser" />
 
 

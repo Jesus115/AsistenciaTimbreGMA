@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JAbarcaPFinal.Vistas.VILogin"
-             Title="VILogin">
+             Title="VILogin"
+             Shell.NavBarIsVisible="False"
+             >
      <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="220" ></RowDefinition>
@@ -74,6 +76,7 @@
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="LightGrey" HeightRequest="40" WidthRequest="40" CornerRadius="20" Padding="0" Margin="5">
                             <Image Source="https://icons.veryicon.com/png/o/miscellaneous/remitting-country-linear-icon/password-148.png" Aspect="AspectFill" Margin="0"/>
+
                         </Frame>
                         <Entry
                             IsPassword="True"
