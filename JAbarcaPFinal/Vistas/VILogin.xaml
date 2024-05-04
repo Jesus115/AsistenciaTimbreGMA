@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JAbarcaPFinal.Vistas.VILogin"
+             Title="VILogin">
+     <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="50" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Path Stroke="#000" 
+              Data="m0.30001,0l449,0l0,128.48327c-122.5,64.30167 -332.5,65.89076 -449,7.2429c0,-45.25313 0,-90.47304 0,-135.72617z" 
+              Fill="#A98E49"
+            />
+        
+        <StackLayout>
+            <Frame 
+            BackgroundColor="WhiteSmoke" 
+            HeightRequest="60" WidthRequest="60" 
+            CornerRadius="30" 
+            Padding="0" 
+            Margin="0,100,0,0"
+            HorizontalOptions="Center"
+            
+            >
+                <Image 
+                    Source="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" Aspect="AspectFill" Margin="0"></Image>
+            </Frame>
+        </StackLayout>
+        <Grid RowSpacing="5" Grid.Row="1" Margin="10,10,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" ></RowDefinition>
+                <RowDefinition Height="50" ></RowDefinition>
+                <RowDefinition Height="50" ></RowDefinition>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="40" ></RowDefinition>
+                <RowDefinition Height="40" ></RowDefinition>
+                <RowDefinition Height="*" ></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label 
+                Grid.Row="1" 
+                Text=" GMAGo!" 
+                HorizontalOptions="Center"
+                FontSize="Title"
+                FontAttributes="Bold"
+                Padding="0"
+                Margin="0"
+                ></Label>
+            <Label 
+                Grid.Row="2" 
+                Text="Bienvenido, Ingresa Para Continuar!" 
+                HorizontalOptions="Center"
+                FontSize="Subtitle"
+                ></Label>
+            <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <Frame BackgroundColor="Transparent" BorderColor="DarkGoldenrod" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="10">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame BackgroundColor="LightGrey" HeightRequest="40" WidthRequest="40" CornerRadius="20" Padding="0" Margin="5">
+                            <Image Source="https://cdn.iconscout.com/icon/free/png-256/free-user-533-130265.png" Aspect="AspectFill" Margin="0"/>
+                        </Frame>
+                        <Entry 
+                            Placeholder="Usuario"
+                            x:Name="txtUsuario"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="0,0,20,0"
+                            />
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="Transparent" BorderColor="DarkGoldenrod" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="10">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame BackgroundColor="LightGrey" HeightRequest="40" WidthRequest="40" CornerRadius="20" Padding="0" Margin="5">
+                            <Image Source="https://icons.veryicon.com/png/o/miscellaneous/remitting-country-linear-icon/password-148.png" Aspect="AspectFill" Margin="0"/>
+                        </Frame>
+                        <Entry
+                            IsPassword="True"
+                            x:Name="txtClave"
+                            Placeholder="Contraseña" 
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="0,0,20,0"
+                            />
+                    </StackLayout>
+                </Frame>
+                <StackLayout Orientation="Horizontal" Margin="0,5,0,0" Padding="0">
+                    <CheckBox IsChecked="False"/>
+                    <Label Text="Recordar Sesion?" TextColor="DarkGrey" FontSize="Small" VerticalTextAlignment="Center" HorizontalOptions="Center"/>
+                </StackLayout>
+                <Button 
+                    Text="Iniciar Sesion" 
+                    BackgroundColor="DarkGoldenrod"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="15"
+                    WidthRequest="200"
+                    Margin="0,15,0,0"
+                    x:Name="Ingresar"
+                    Clicked="Ingresar_Clicked"/>
+
+            </StackLayout>
+        </Grid>
+
+    </Grid>
+    <!-- <VerticalStackLayout Padding="25" Spacing="25">
+       
+        <Button Text="Login"
+                x:Name="Ingresar"
+                Clicked="Ingresar_Clicked"
+                />
+    </VerticalStackLayout>-->
+
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="JAbarcaPFinal.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:JAbarcaPFinal"
+    xmlns:views="clr-namespace:JAbarcaPFinal.Vistas"
+    Shell.FlyoutBehavior="Flyout">
+
+    <ShellContent
+        Title="VLoading"
+        ContentTemplate="{DataTemplate views:VLoading}"
+        Route="VLoading"
+        Shell.FlyoutItemIsVisible="False"
+
+        />
+    <ShellContent
+        Title="VILogin"
+        ContentTemplate="{DataTemplate views:VILogin}"
+        Route="VILogin"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.FlyoutItemIsVisible="False"
+
+        />
+    <TabBar FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="VDetAttention"
+            ContentTemplate="{DataTemplate views:VDetAttention}"
+            Route="VDetAttention" />
+        <ShellContent
+            Title="VDetAttentionCurrent"
+            ContentTemplate="{DataTemplate views:VDetAttentionCurrent}"
+            Route="VDetAttentionCurrent" />
+        <ShellContent
+            Title="VIRegAttention"
+            ContentTemplate="{DataTemplate views:VIRegAttention}"
+            Route="VIRegAttention" />
+        <ShellContent
+            Title="VIUser"
+            ContentTemplate="{DataTemplate views:VIUser}"
+            Route="VIUser" />
+
+
+    </TabBar>
+    
+</Shell>
+
