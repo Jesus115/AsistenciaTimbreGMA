@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:JAbarcaPFinal"
     xmlns:views="clr-namespace:JAbarcaPFinal.Vistas"
     Shell.FlyoutBehavior="Flyout">
-
+   
     <ShellContent
         Title="Loading"
         ContentTemplate="{DataTemplate views:VLoading}"
@@ -33,6 +33,7 @@
             Shell.TabBarTitleColor="White"
             />
     <TabBar FlyoutDisplayOptions="AsMultipleItems" >
+
         <ShellContent
             Title="  Det.Registro"
             ContentTemplate="{DataTemplate views:VDetAttention}"
@@ -41,7 +42,9 @@
             Shell.TabBarTitleColor="White"
             Shell.UnselectedColor="DarkGoldenrod"
             Shell.TabBarUnselectedColor="DarkGoldenrod"
-            Route="VDetAttention" />
+            Route="VDetAttention"
+            
+            />
         
         <ShellContent
             Title="  Registrar"

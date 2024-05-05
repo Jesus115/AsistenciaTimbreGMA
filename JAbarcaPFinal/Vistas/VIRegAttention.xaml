@@ -3,10 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JAbarcaPFinal.Vistas.VIRegAttention"
              Title="Asistencia">
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="25" Spacing="25">
         <Label 
-            Text="Reg Atencion!"
+            Text="Registra tu Asistencia!"
+            FontAttributes="Bold"
+            TextTransform="Uppercase"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Frame BorderColor="DimGray" Padding="3" CornerRadius="10">
+            <Picker>
+                <Picker.Items>
+                    <x:String>Entrada</x:String>
+                    <x:String>Salida Almuerzo</x:String>
+                    <x:String>Entrada Almuerzo</x:String>
+                    <x:String>Salida</x:String>
+                </Picker.Items>
+            </Picker>
+        </Frame>
+        <Button x:Name="TomarFoto" Text="Registrar Asistenccia" TextTransform="Uppercase" TextColor="DarkGoldenrod" BackgroundColor="DimGrey" Clicked="TomarFoto_Clicked"/>
+        <Image x:Name="imgFoto"/>
     </VerticalStackLayout>
 </ContentPage>

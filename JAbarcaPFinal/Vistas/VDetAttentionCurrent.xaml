@@ -3,10 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JAbarcaPFinal.Vistas.VDetAttentionCurrent"
              Title="Registros Asistencias">
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="35" Spacing="20">
         <Label 
-            Text="Reg current!"
+            Text="Registro Actual!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Text="Tipo : " TextColor="DimGray" Margin="10"></Label>
+            <Label Grid.Column="1" Grid.Row="0" Text="Entrada" TextColor="DimGray" Margin="10"></Label>
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Hora : " TextColor="DimGray" Margin="10"></Label>
+            <Label Grid.Column="1" Grid.Row="1" Text="18:09" TextColor="DimGray" Margin="10"></Label>
+        </Grid>
+            <Image HorizontalOptions="FillAndExpand" x:Name="imgFoto" />       
+
     </VerticalStackLayout>
 </ContentPage>

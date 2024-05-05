@@ -3,14 +3,69 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JAbarcaPFinal.Vistas.VIUser"
              Title="Usuario">
-    <VerticalStackLayout>
-        <Label 
-            Text="V user"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button Text="Cerrar Sesion"
-                x:Name="btnLogout"
-                Clicked="btnLogout_Clicked"
-                ></Button>
+    <VerticalStackLayout Spacing="25" Padding="25">
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" ></RowDefinition>
+                <RowDefinition Height="*" ></RowDefinition>
+                <RowDefinition Height="50" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" >
+                            <Frame 
+                                        BackgroundColor="WhiteSmoke" 
+                                        HeightRequest="80" WidthRequest="60" 
+                                        CornerRadius="30" 
+                                        Padding="0" 
+                                        Margin="0,100,0,0"
+                                        HorizontalOptions="Center"
+            
+                                        >
+                                            <Image 
+                                                Source="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" Aspect="AspectFill" Margin="0"></Image>
+                                     </Frame>
+
+                        </StackLayout>
+        
+            <Grid RowSpacing="5" Grid.Row="1" Margin="10,100,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" ></RowDefinition>
+                        <RowDefinition Height="50" ></RowDefinition>
+                        <RowDefinition Height="50" ></RowDefinition>
+                        <RowDefinition Height="Auto" ></RowDefinition>
+                        <RowDefinition Height="40" ></RowDefinition>
+                        <RowDefinition Height="40" ></RowDefinition>
+                        <RowDefinition Height="*" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                        
+               
+                    <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                         
+                        <Label Text="Jesus Antonio Abarca" TextColor="DimGray"/>
+                        <Label Text="1725329005" TextColor="DimGray"/>
+                        <Label Text="jesus@mosqueraulestia.com" TextColor="DimGray"/>
+                        <Label Text="0969046751" TextColor="DimGray"/>
+                        <Label Text=" " TextColor="DimGray"/>
+                        <Label Text=" " TextColor="DimGray"/>
+        
+                        
+
+                    </StackLayout>
+
+                    <Button Text="Cerrar Sesion"
+                            x:Name="btnLogout"
+                            Clicked="btnLogout_Clicked"
+                            BackgroundColor="DarkGoldenrod"
+                            TextColor="DimGray"
+                            FontAttributes="Bold"
+                            CornerRadius="15"
+                            WidthRequest="200"
+                            Grid.Row="4"
+                            HorizontalOptions="FillAndExpand"
+                            ></Button>
+            </Grid>
+        </Grid>
+
+        
     </VerticalStackLayout>
 </ContentPage>
