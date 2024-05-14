@@ -18,8 +18,9 @@ namespace JAbarcaPFinal.Services
 			var authState = Preferences.Default.Get<bool>(AuthStateKey, false);
 			return authState;
 		}
-		public void Login() {
-			Preferences.Default.Set<bool>(AuthStateKey, true);
+		public async void Login(string token) {
+            await SecureStorage.SetAsync("AuthToken", token);
+            Preferences.Default.Set<bool>(AuthStateKey, true);
 		}
         public void Logout()
         {

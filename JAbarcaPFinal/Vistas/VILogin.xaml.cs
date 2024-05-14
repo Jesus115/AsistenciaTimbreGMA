@@ -13,7 +13,8 @@ public partial class VILogin : ContentPage
 	}
     private async void Ingresar_Clicked(System.Object sender, System.EventArgs e)
     {
-		_authService.Login();
-		await Shell.Current.GoToAsync($"//{nameof(VIRegAttention)}");
+        _authService.Login("""aqui""");
+        //_authService.Login("aqui token");
+        await Shell.Current.GoToAsync($"//{nameof(VIRegAttention)}");
     }
 }

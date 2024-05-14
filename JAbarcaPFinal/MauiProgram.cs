@@ -20,6 +20,7 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+        builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
         builder.Services.AddTransient<AuthService>();
         builder.Services.AddTransient<VLoading>();
         builder.Services.AddTransient<VILogin>();

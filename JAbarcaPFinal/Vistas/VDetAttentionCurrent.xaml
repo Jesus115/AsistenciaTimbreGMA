@@ -24,9 +24,13 @@
             <Label Grid.Column="1" Grid.Row="0" Text="Entrada" TextColor="DimGray" Margin="10"></Label>
 
             <Label Grid.Column="0" Grid.Row="1" Text="Hora : " TextColor="DimGray" Margin="10"></Label>
-            <Label Grid.Column="1" Grid.Row="1" Text="18:09" TextColor="DimGray" Margin="10"></Label>
+           <!--<Label Grid.Column="1" Grid.Row="1" Text="18:09" TextColor="DimGray" Margin="10"></Label>--> 
+            <Label
+            x:Name="latlong" Grid.Column="1" Margin="10" Grid.Row="1" TextColor="DimGray"/>
         </Grid>
-            <Image HorizontalOptions="FillAndExpand" x:Name="imgFoto" />       
+            <Image HorizontalOptions="FillAndExpand" x:Name="imgFoto" />
+        <Button x:Name="obtenerLatLong" Clicked="obtenerLatLong_Clicked"></Button>
+        
 
     </VerticalStackLayout>
 </ContentPage>
