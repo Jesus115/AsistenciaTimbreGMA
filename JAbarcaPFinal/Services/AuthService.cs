@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Maui.Storage;
 
 namespace JAbarcaPFinal.Services
 {
@@ -20,6 +21,7 @@ namespace JAbarcaPFinal.Services
 		}
 		public async void Login(string token) {
             await SecureStorage.SetAsync("AuthToken", token);
+            Preferences.Set("AuthToken", token);
             Preferences.Default.Set<bool>(AuthStateKey, true);
 		}
         public void Logout()

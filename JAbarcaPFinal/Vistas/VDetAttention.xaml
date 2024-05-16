@@ -3,10 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JAbarcaPFinal.Vistas.VDetAttention"
              Title="Det. Asistencias">
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="20" Spacing="25">
         <Label 
-            Text="Attention!"
+            Text="Det. Asistencias"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <ListView x:Name="lstRegistros">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label x:Name="lblLatitud" Text="{Binding latitud}"/>
+                            <Label x:Name="lblLongitud" Text="{Binding longitud}"/>
+                            <Label x:Name="lblTipo" Text="{Binding nombreCat}"/>
+
+                        </StackLayout>
+
+                    </ViewCell>
+
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+
+        </ListView>
+
     </VerticalStackLayout>
 </ContentPage>
