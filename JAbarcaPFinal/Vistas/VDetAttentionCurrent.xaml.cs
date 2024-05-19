@@ -1,41 +1,48 @@
 ﻿using System.IO;
+using System.Text.Json;
+using JAbarcaPFinal.Models;
+using Microsoft.Maui.Controls;
 
 namespace JAbarcaPFinal.Vistas;
 
 public partial class VDetAttentionCurrent : ContentPage
 {
-	private System.IO.Stream _img;
-    private double _lat;
-    private double _long;
-    private ImageSource _img2;
-
-    public VDetAttentionCurrent(System.IO.Stream img,double lat, double longi )
-	{
-		InitializeComponent();
-		_img = img;
-        _lat = lat;
-        _long = longi;
-        imgFoto.Source = ImageSource.FromStream(() => _img);
-        latlong.Text = _lat.ToString();
-        lonlong.Text = _long.ToString();
-    }
     public VDetAttentionCurrent()
     {
-        latlong.Text = "";
-        lonlong.Text = "";
-        imgFoto.Source = "";
         InitializeComponent();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        string imageBytesBase64 = Preferences.Get("ImageBytes", null);
+        string latitudeString = Preferences.Get("Latitude", null);
+        string longitudeString = Preferences.Get("Longitude", null);
+
+        if (!string.IsNullOrEmpty(imageBytesBase64) && !string.IsNullOrEmpty(latitudeString) && !string.IsNullOrEmpty(longitudeString))
+        {
+            var imageBytes = Convert.FromBase64String(imageBytesBase64);
+            var imageStream = new MemoryStream(imageBytes);
+
+            // Mostrar la imagen 
+            imgFoto.Source = ImageSource.FromStream(() => imageStream);
+            latlong.Text = latitudeString;
+            lonlong.Text = longitudeString;
+           
+        }
     }
 
 
 
     async void obtenerLatLong_Clicked(System.Object sender, System.EventArgs e)
     {
+        //Limpiar data
+        Preferences.Remove("ImageBytes");
+        Preferences.Remove("Latitude");
+        Preferences.Remove("Longitude");
+        //continuar
         await Navigation.PopAsync();
         await Shell.Current.GoToAsync($"//{nameof(VDetAttention)}");
-
-
     }
-
-
 }

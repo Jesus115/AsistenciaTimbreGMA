@@ -12,6 +12,7 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute(nameof(VIUser), typeof(VIUser));
 		Routing.RegisterRoute(nameof(VIRegAttention), typeof(VIRegAttention));
 		Routing.RegisterRoute(nameof(VDetAttentionCurrent), typeof(VDetAttentionCurrent));
+
     }
 }
 

@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Net;
 using System.Text;
+using System.Text.Json;
+using JAbarcaPFinal.Models;
 
 public partial class VIRegAttention : ContentPage
 {
@@ -49,33 +51,64 @@ public partial class VIRegAttention : ContentPage
 
     private async void TomarFoto_Clicked(System.Object sender, System.EventArgs e)
     {
+        //Limpiar data
+        Preferences.Remove("ImageBytes");
+        Preferences.Remove("Latitude");
+        Preferences.Remove("Longitude");
+
         string endpoint = "asistencia/crear";
         
         if (MediaPicker.Default.IsCaptureSupported) {
             //tomar pic or capture photo
             FileResult takePic = await MediaPicker.Default.CapturePhotoAsync();
+
+
 			//cargar foto
 			if (takePic != null) {
                 var memoriaStream = await takePic.OpenReadAsync();
+                string imageBase64;
+                using (var memoryStream = new MemoryStream())
+                {
+                    await memoriaStream.CopyToAsync(memoryStream);
+                    var imageBytes = memoryStream.ToArray();
+                    imageBase64 = Convert.ToBase64String(imageBytes);
+
+                    // Guardar los bytes en Preferences
+                    Preferences.Set("ImageBytes", Convert.ToBase64String(imageBytes));
+                }
+
                 //imgFoto.Source = ImageSource.FromStream(() => memoriaStream);
                 //guardar imagen
-                string localFilePath = Path.Combine(FileSystem.CacheDirectory, takePic.FileName);
+               /* string localFilePath = Path.Combine(FileSystem.CacheDirectory, takePic.FileName);
 				using Stream sourceStream = await takePic.OpenReadAsync();
 				using FileStream localFileStream = File.OpenWrite(localFilePath);
-				await sourceStream.CopyToAsync(localFileStream);
+				await sourceStream.CopyToAsync(localFileStream);*/
                 
                 var location = await Geolocation.GetLocationAsync();
                 if (location != null)
                 {
                     double latitude = location.Latitude;
                     double longitude = location.Longitude;
-                    string imageBase64 = await ConvertImageToBase64(memoriaStream);
+                    Preferences.Set("ImageBytes", imageBase64);
+                    Preferences.Set("Latitude", latitude.ToString());
+                    Preferences.Set("Longitude", longitude.ToString());
 
                     var contentBytes = new StringContent($"{{\"tipo\": \"1\", \"longitud\": \"{longitude}\", \"latitud\": \"{latitude}\", \"foto\": \"{imageBase64}\"}}", Encoding.UTF8, "application/json");
                     string result = await EnviarDataApi(endpoint, contentBytes);
 
+                    /*var data = new dataRegister
+                    {
+                        ImageBase64 = imageBase64,
+                        Latitude = latitude,
+                        Longitude = longitude
+                    };
+                    string jsonData = JsonSerializer.Serialize(data);
+                    Preferences.Set("NavigationData", jsonData);*/
+
+                    await Shell.Current.GoToAsync(nameof(VDetAttentionCurrent));
+
                     // envio ubicación obtenida
-                    await Navigation.PushAsync(new VDetAttentionCurrent(memoriaStream, latitude, longitude));
+                    //await Navigation.PushAsync(new VDetAttentionCurrent(memoriaStream, latitude, longitude));
 
                 }
                 else
