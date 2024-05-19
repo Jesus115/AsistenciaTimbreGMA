@@ -2,14 +2,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JAbarcaPFinal.Vistas.VDetAttentionCurrent"
-             Title="Registros Asistencias">
+             Title="Registros Asistencias"
+              Shell.NavBarIsVisible="False"
+             >
     <VerticalStackLayout Padding="35" Spacing="20">
-        <Label 
+        <Label
+            FontSize="Title"
+            FontAttributes="Bold"
             Text="Registro Actual!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
 
@@ -20,16 +25,18 @@
                 <ColumnDefinition/>
 
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Grid.Row="0" Text="Tipo : " TextColor="DimGray" Margin="10"></Label>
-            <Label Grid.Column="1" Grid.Row="0" Text="Entrada" TextColor="DimGray" Margin="10"></Label>
+            <Label Grid.Column="0" Grid.Row="0" FontAttributes="Bold" Text="Tipo : " TextColor="DimGray" Margin="10"></Label>
+            <Label Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Latitud : " TextColor="DimGray" Margin="10"></Label>
+            <Label  Grid.Column="0" Margin="10"  FontAttributes="Bold" Grid.Row="2" Text="Longitud" TextColor="DimGray"/>
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Hora : " TextColor="DimGray" Margin="10"></Label>
-           <!--<Label Grid.Column="1" Grid.Row="1" Text="18:09" TextColor="DimGray" Margin="10"></Label>--> 
-            <Label
-            x:Name="latlong" Grid.Column="1" Margin="10" Grid.Row="1" TextColor="DimGray"/>
+           <!--<Label Grid.Column="1" Grid.Row="1" Text="18:09" TextColor="DimGray" Margin="10"></Label>-->
+             <Label Grid.Column="1" Grid.Row="0"  Text="Entrada" TextColor="DimGray" Margin="10"></Label>
+
+            <Label x:Name="latlong" Grid.Column="1" Margin="10" Grid.Row="1" TextColor="DimGray"/>
+            <Label Grid.Column="1" Grid.Row="2" x:Name="lonlong"  TextColor="DimGray"/>
         </Grid>
-            <Image HorizontalOptions="FillAndExpand" x:Name="imgFoto" />
-        <Button x:Name="obtenerLatLong" Clicked="obtenerLatLong_Clicked"></Button>
+            <Image HorizontalOptions="FillAndExpand"  x:Name="imgFoto" />
+        <Button x:Name="obtenerLatLong" BackgroundColor="DarkGoldenrod"  TextColor="White" Text="Mostrar Registros" Clicked="obtenerLatLong_Clicked"></Button>
         
 
     </VerticalStackLayout>

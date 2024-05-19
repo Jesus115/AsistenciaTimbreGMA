@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.IO;
 using System.Net;
 using System.Text;
 using Android.Content.Res;
@@ -13,7 +14,7 @@ namespace JAbarcaPFinal.Vistas;
 
 public partial class VDetAttention : ContentPage
 {
-	private const string _baseUrl = "http://25.46.184.61:8000/api/";
+	private const string _baseUrl = "http://192.168.1.4:8000/api/";
 	private readonly HttpClient _httpClient = new HttpClient();
    
     public VDetAttention()
@@ -36,10 +37,16 @@ public partial class VDetAttention : ContentPage
         // Verificar si la solicitud fue exitosa
         if (response.IsSuccessStatusCode)
         {
+
             var data = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(data);
+            var tempObject = JsonConvert.DeserializeObject<dynamic>(data);
+            List<registroAsistencia> registro = tempObject.data.ToObject<List<registroAsistencia>>();
+            foreach (var reg in registro)
+            {
+                AddAtentionToGrid(reg);
+            }
             // Leer la respuesta
-            return ;
+            //return;
         }
         else
         {
@@ -47,6 +54,36 @@ public partial class VDetAttention : ContentPage
             // Manejar el error de la solicitud
             return ;
         }
+
+
+    }
+    private void AddAtentionToGrid(registroAsistencia reg)
+    {
+        // Create new row for the employee
+        int newRowIndex = grdAtenciones.RowDefinitions.Count;
+        grdAtenciones.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        var lbLatitud = new Label { Text = reg.latitud + " ", AnchorX = 10 };
+        Grid.SetColumn(lbLatitud, 0); // Set column index to 0
+
+        var lbLongitud = new Label { Text = reg.longitud + " ", AnchorX = 10 };
+        Grid.SetColumn(lbLongitud, 1); // Set column index to 0
+
+        var lbTipo = new Label { Text = reg.nombreCat + " ", AnchorX = 10 };
+        Grid.SetColumn(lbTipo, 2); // Set column index to 1
+
+        var lbFecha = new Label { Text = reg.fecha.ToString() + " ", AnchorX = 10 };
+        Grid.SetColumn(lbFecha, 3); // Set column index to 1
+        // Add labels to the grid in the new row
+        grdAtenciones.Add(lbLatitud, 0, newRowIndex);
+        grdAtenciones.Add(lbLongitud, 1, newRowIndex);
+        grdAtenciones.Add(lbTipo, 2, newRowIndex);
+        grdAtenciones.Add(lbFecha, 3, newRowIndex);
+    }
+
+    async void btnAgregarRegistro_Clicked(System.Object sender, System.EventArgs e)
+    {
+        //await Navigation.PushAsync(new VIRegAttention());
+        await Shell.Current.GoToAsync($"//{nameof(VIRegAttention)}");
 
 
     }

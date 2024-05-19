@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JAbarcaPFinal.Vistas.VIRegAttention"
-             Title="Asistencia">
+             Title="Asistencia"
+
+             >
     <VerticalStackLayout Padding="25" Spacing="25">
         <Label 
             Text="Registra tu Asistencia!"
@@ -10,6 +12,13 @@
             TextTransform="Uppercase"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+               
+        <Image>
+            <Image.Source>
+                <UriImageSource Uri="https://gmago.mosqueraulestia.com/assets/img/bodegas/gma_png.png"
+                                CacheValidity="10:00:00:00" />
+            </Image.Source>
+        </Image>
         <Frame BorderColor="DimGray" Padding="3" CornerRadius="10">
             <Picker>
                 <Picker.Items>
@@ -20,7 +29,6 @@
                 </Picker.Items>
             </Picker>
         </Frame>
-        <Button x:Name="TomarFoto" Text="Registrar Asistenccia" TextTransform="Uppercase" TextColor="DarkGoldenrod" BackgroundColor="DimGrey" Clicked="TomarFoto_Clicked"/>
-        <Image x:Name="imgFoto"/>
+        <Button x:Name="TomarFoto" Text="Registrar Asistenccia" TextTransform="Uppercase" BackgroundColor="DarkGoldenrod"  TextColor="White" Clicked="TomarFoto_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

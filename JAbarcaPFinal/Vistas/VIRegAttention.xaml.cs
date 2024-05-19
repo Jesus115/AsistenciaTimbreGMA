@@ -6,7 +6,8 @@ public partial class VIRegAttention : ContentPage
 	public VIRegAttention()
 	{
 		InitializeComponent();
-	}
+
+    }
 
     private async void TomarFoto_Clicked(System.Object sender, System.EventArgs e)
     {
@@ -17,7 +18,7 @@ public partial class VIRegAttention : ContentPage
             //FileResult takePic = await MediaPicker.Default.PickPhotoAsync();
 			if (takePic != null) {
                 var memoriaStream = await takePic.OpenReadAsync();
-                imgFoto.Source = ImageSource.FromStream(() => memoriaStream);
+                //imgFoto.Source = ImageSource.FromStream(() => memoriaStream);
                 //guardar imagen
                 string localFilePath = Path.Combine(FileSystem.CacheDirectory, takePic.FileName);
 				using Stream sourceStream = await takePic.OpenReadAsync();
@@ -26,15 +27,28 @@ public partial class VIRegAttention : ContentPage
                 //await Shell.Current.DisplayAlert("OOPS", localFileStream.Name, "Cerrar");
                 //await Shell.Current.GoToAsync($"//{nameof(VDetAttentionCurrent)}");si vale
                 //await Shell.Current.GoToAsync($"//{nameof(VDetAttentionCurrent)}?imgFoto={memoriaStream}");
-                var authToken = SecureStorage.GetAsync("AuthToken");
-                Debug.WriteLine(authToken);
+                //var authToken = SecureStorage.GetAsync("AuthToken");
+                //Debug.WriteLine(authToken);
+                var location = await Geolocation.GetLocationAsync();
+                if (location != null)
+                {
+                    double latitude = location.Latitude;
+                    double longitude = location.Longitude;
+                    // Haz algo con la ubicación obtenida
+                    await Navigation.PushAsync(new VDetAttentionCurrent(memoriaStream, latitude, longitude));
 
-                await Navigation.PushAsync(new VDetAttentionCurrent(memoriaStream,"hola"));
+                }
+                else
+                {
+                    // Manejar caso en que no se pueda obtener la ubicación
+                    await Shell.Current.DisplayAlert("Error", "Necesita Dar Permisos A La Ubicacion De Su Telefono", "Cerrar");
+
+                }
 
             }
         }
 		else {
-			await Shell.Current.DisplayAlert("OOPS", "Tu dispositivo no es compatible", "Cerrar");
+			await Shell.Current.DisplayAlert("Error", "Tu Dispositivo No Es Compatible", "Cerrar");
         }
 
     }

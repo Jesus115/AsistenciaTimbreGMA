@@ -12,7 +12,8 @@ namespace JAbarcaPFinal.Models
         public string nombreCat { get; set; }
         public int idcatalogo { get; set; }
         public int idusuario { get; set; }
-        
+        public DateTime fecha { get; set; }
+
 
         public registroAsistencia()
 		{

@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JAbarcaPFinal.Vistas.VDetAttention"
              Title="Det. Asistencias">
-    <VerticalStackLayout Padding="20" Spacing="25">
-        <Label 
+    <VerticalStackLayout Padding="30" Spacing="25">
+        <Label
+            FontAttributes="Bold"
+            FontSize="Title"
             Text="Det. Asistencias"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <ListView x:Name="lstRegistros">
+        <!--<ListView x:Name="lstRegistros">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -25,7 +27,28 @@
 
             </ListView.ItemTemplate>
 
-        </ListView>
+        </ListView>-->
+        <Grid x:Name="grdAtenciones" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+             <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"  />
+             </Grid.RowDefinitions>
+            <Label FontAttributes="Bold" Text="Latitud" Grid.Column="0" Grid.Row="0"/>
+            <Label FontAttributes="Bold" Text="Longitud" Grid.Column="1" Grid.Row="0"/>
+            <Label FontAttributes="Bold" Text=" Tipo Entrada " Grid.Column="2" Grid.Row="0"/>
+            <Label FontAttributes="Bold" Text=" Fecha / Hora " Grid.Column="3" Grid.Row="0"/>
+
+        </Grid>
+         <Button x:Name="btnAgregarRegistro" Clicked="btnAgregarRegistro_Clicked" BackgroundColor="DarkGoldenrod"  TextColor="White" Text="Agregar Registro" ></Button>
 
     </VerticalStackLayout>
 </ContentPage>

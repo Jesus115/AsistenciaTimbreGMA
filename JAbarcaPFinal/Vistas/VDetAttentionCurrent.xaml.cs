@@ -5,32 +5,36 @@ namespace JAbarcaPFinal.Vistas;
 public partial class VDetAttentionCurrent : ContentPage
 {
 	private System.IO.Stream _img;
-	private string _tipoRegistro;
-    IGeolocation geolocation;
+    private double _lat;
+    private double _long;
+    private ImageSource _img2;
 
-    public VDetAttentionCurrent(System.IO.Stream img,string tipoRegistro )
+    public VDetAttentionCurrent(System.IO.Stream img,double lat, double longi )
 	{
 		InitializeComponent();
 		_img = img;
-		_tipoRegistro = tipoRegistro;
+        _lat = lat;
+        _long = longi;
         imgFoto.Source = ImageSource.FromStream(() => _img);
+        latlong.Text = _lat.ToString();
+        lonlong.Text = _long.ToString();
     }
+    public VDetAttentionCurrent()
+    {
+        latlong.Text = "";
+        lonlong.Text = "";
+        imgFoto.Source = "";
+        InitializeComponent();
+    }
+
+
 
     async void obtenerLatLong_Clicked(System.Object sender, System.EventArgs e)
     {
-        var location = await Geolocation.GetLocationAsync();
-        if (location != null)
-        {
-            double latitude = location.Latitude;
-            double longitude = location.Longitude;
-            latlong.Text = latitude.ToString();
-            // Haz algo con la ubicación obtenida
-        }
-        else
-        {
-            latlong.Text = "error";
-            // Manejar caso en que no se pueda obtener la ubicación
-        }
+        await Navigation.PopAsync();
+        await Shell.Current.GoToAsync($"//{nameof(VDetAttention)}");
+
+
     }
 
 

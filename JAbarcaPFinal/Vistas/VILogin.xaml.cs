@@ -9,7 +9,7 @@ namespace JAbarcaPFinal.Vistas;
 public partial class VILogin : ContentPage
 {
 	private readonly AuthService _authService;
-    private const string url = "http://25.46.184.61:8000/api/";
+    private const string url = "http://192.168.1.4:8000/api/";
     private readonly HttpClient client = new HttpClient();
     public VILogin(AuthService authService)
 	{
