@@ -19,16 +19,11 @@
                                 CacheValidity="10:00:00:00" />
             </Image.Source>
         </Image>
-        <Frame BorderColor="DimGray" Padding="3" CornerRadius="10">
-            <Picker>
-                <Picker.Items>
-                    <x:String>Entrada</x:String>
-                    <x:String>Salida Almuerzo</x:String>
-                    <x:String>Entrada Almuerzo</x:String>
-                    <x:String>Salida</x:String>
-                </Picker.Items>
-            </Picker>
+
+        <Frame BorderColor="DimGray" Padding="3" CornerRadius="10">            
+            <Picker x:Name="tRegitroP" ItemDisplayBinding="{Binding DisplayName}"/>
         </Frame>
+
         <Button x:Name="TomarFoto" Text="Registrar Asistenccia" TextTransform="Uppercase" BackgroundColor="DarkGoldenrod"  TextColor="White" Clicked="TomarFoto_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

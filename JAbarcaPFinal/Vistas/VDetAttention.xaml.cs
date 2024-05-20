@@ -2,13 +2,8 @@
 using System.IO;
 using System.Net;
 using System.Text;
-using Android.Content.Res;
-using Android.Media.TV;
-using AndroidX.ConstraintLayout.Core;
-using GoogleGson;
 using JAbarcaPFinal.Models;
 using Newtonsoft.Json;
-using static Android.Webkit.WebStorage;
 
 namespace JAbarcaPFinal.Vistas;
 

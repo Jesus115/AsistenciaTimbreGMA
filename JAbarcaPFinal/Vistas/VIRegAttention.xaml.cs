@@ -13,6 +13,15 @@ public partial class VIRegAttention : ContentPage
 	{
 		InitializeComponent();
         _httpClient = new HttpClient();
+        var pickerItems = new List<PickerTipo>
+        {
+            new PickerTipo { DisplayName = "Entrada", Value = "1" },
+            new PickerTipo { DisplayName = "Salida Almuerzo", Value = "2" },
+            new PickerTipo { DisplayName = "Entrada Almuerzo", Value = "3" },
+            new PickerTipo { DisplayName = "Salida", Value = "4" }
+        };
+
+        tRegitroP.ItemsSource = pickerItems;
 
     }
     private async Task<string> EnviarDataApi(string endpoint, System.Net.Http.HttpContent data)
@@ -51,6 +60,8 @@ public partial class VIRegAttention : ContentPage
 
     private async void TomarFoto_Clicked(System.Object sender, System.EventArgs e)
     {
+        var selectedItem = tRegitroP.SelectedItem as PickerTipo;
+
         //Limpiar data
         Preferences.Remove("ImageBytes");
         Preferences.Remove("Latitude");
@@ -93,7 +104,11 @@ public partial class VIRegAttention : ContentPage
                     Preferences.Set("Latitude", latitude.ToString());
                     Preferences.Set("Longitude", longitude.ToString());
 
-                    var contentBytes = new StringContent($"{{\"tipo\": \"1\", \"longitud\": \"{longitude}\", \"latitud\": \"{latitude}\", \"foto\": \"{imageBase64}\"}}", Encoding.UTF8, "application/json");
+                    string selectedTipo = selectedItem.Value;
+                    // Ahora puedes usar el selectedValue como necesites
+                    Console.WriteLine($"Selected Value: {selectedTipo}");
+
+                    var contentBytes = new StringContent($"{{\"tipo\": \"{selectedTipo}\", \"longitud\": \"{longitude}\", \"latitud\": \"{latitude}\", \"foto\": \"{imageBase64}\"}}", Encoding.UTF8, "application/json");
                     string result = await EnviarDataApi(endpoint, contentBytes);
 
                     /*var data = new dataRegister
